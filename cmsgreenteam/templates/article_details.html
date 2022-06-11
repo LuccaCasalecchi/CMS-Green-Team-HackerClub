@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}{{post.title}}{% endblock %} 
+
+{% block content %}
 <h1>{{post.title}}<h1>
   <small>By: {{post.author.first_name}}</small>
   <hr>
@@ -5,4 +9,5 @@
   {{post.body}}
 
   <br/><br/>
-  <a href = "{% url 'home' %}">Back to Home</a>
+  <a href = "{% url 'home' %}" class="btn btn-secondary" style="background-color: #228b22;">Back to Home</a>
+{% endblock %}

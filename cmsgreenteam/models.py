@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
+    title_tag = models.CharField(max_length=100, default ="Post")
     
     #se o usuário postar diversos posts e logo depois deletar a sua conta, esta linha de código apaga os posts feitos por ele.
     author = models.ForeignKey(User, on_delete=models.CASCADE) 
