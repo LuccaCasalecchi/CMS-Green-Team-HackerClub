@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from datetime import datetime, date
 
 
 
@@ -8,9 +9,10 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     title_tag = models.CharField(max_length=100, default ="Post")
     
-    #se o usuário postar diversos posts e logo depois deletar a sua conta, esta linha de código apaga os posts feitos por ele.
+    #se o usuário postar diversos posts e logo depois deletar a sua conta, a linha abaixo do código apaga os posts feitos por ele.
     author = models.ForeignKey(User, on_delete=models.CASCADE) 
     body = models.TextField()
+    publication_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.title + ' - ' + str(self.author)
