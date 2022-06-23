@@ -9,6 +9,7 @@
         <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> -{{post.author.first_name}}
          
         <!--<small><a href="{% url 'update_post' post.pk %}">Edit</a></small>-->
+        {{post.body|slice:"90"}}
       </li>
         
   {%endfor%}

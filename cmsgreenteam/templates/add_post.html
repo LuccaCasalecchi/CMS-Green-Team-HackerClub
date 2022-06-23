@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 {% block title %} Criar Um Novo Post {% endblock %}
 {% block content %}
+
+{%if user.is_authenticated%}
 <h1>Adicionar Post<h1/>
-<br/><br/>
-<div class="form-group">
-  <form method="POST">
-      {% csrf_token %}
-      {{form.as_p}}
-      <button class="btn btn-success">Post</button>
-  <form/>
-</div>
+  <br/><br/>
+  <div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-success">Post</button>
+    <form/>
+  </div>
+{%else%}
+<h1>Você precisa estar logado para criar um post</h1>
+{%endif%}
+
+
   
     
   
