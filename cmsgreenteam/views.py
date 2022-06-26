@@ -10,7 +10,8 @@ from django.urls import reverse_lazy
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
-    ordering = ['publication_date']
+    #ordering = ['publication_date']
+    ordering = ['-id']
 
 
 class ArticleDetailView(DetailView):
@@ -40,3 +41,8 @@ class AddCategoryView(CreateView):
     #form_class=PostForm
     template_name = 'add_category.html'
     fields='__all__'
+
+
+def CategoryView(request, cats):
+	category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+	return render(request, 'categories.html', {'cats':cats.replace('-', ' ').title(), 'category_posts':category_posts})
