@@ -12,6 +12,10 @@
         <button class="btn btn-success">Post</button>
     <form/>
   </div>
+  <script>
+    const name = "{{user.id}}";
+    document.getElementById("username").value = name;
+  </script>
 {%else%}
 <h1>Você precisa estar logado para criar um post</h1>
 {%endif%}
