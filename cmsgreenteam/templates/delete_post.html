@@ -1,25 +1,32 @@
 {% extends 'base.html' %}
-{% block title %} Delete Post {% endblock %}
+{% block title %}Delete Blog Post{% endblock %}
 {% block content %}
 
-{%if user.is_authenticated%}
-  {% if user.id == post.author.id %}
-
-  <h1>Delete Post<h1/>
-  <br/><br/>
-  <h3>Are you shure you wanto to delete: {{post.title}} ?</h3>
-  <div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        <button class="btn btn-danger">Delete Post!</button>
-    <form/>
-  </div>
-
-  {%else%}
-  <h1>You need to be logged in to delete a post</h1>
-   {%endif%}
-  {%endif%}
-  
     
-  
+{% if user.is_authenticated %}
+	{% if user.id == post.author.id %}
+		<h1>Delete Post...</h1>
+		<br/><br/>
+		<h3>Delete: {{ post.title }}</h3>
+
+		<br/>
+		<div class="form-group">
+			<form method="POST">
+				{% csrf_token %}
+				<strong>Tem certeza?</strong><br/><br/>
+				<button class="btn btn-danger">Delete Post!</button>
+		</div>
+		{% else %}
+			Você não tem permissão para deletar este post.
+		{% endif %}
+
+{% else %}
+
+Você não tem permissão para deletar este post.
+
+
+{% endif %}
+
+
+
 {% endblock %}
